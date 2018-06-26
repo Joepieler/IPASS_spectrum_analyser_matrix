@@ -15,6 +15,8 @@ int main( void ){
    // kill the watchdog
    WDT->WDT_MR = WDT_MR_WDDIS;
    
+   hwlib::wait_ms(100);
+   
    auto reset_pin = hwlib:: target::pin_out(hwlib::target::pins::d8);
    auto strobe_pin = hwlib:: target::pin_out(hwlib::target::pins::d9);
    auto analog_pin = hwlib::target::ad_pins::a1;
@@ -28,17 +30,15 @@ int main( void ){
    shiftregister xshift(clock_x,data_x);
    shiftregister yshift(clock_y, data_y);
    
-   
    matrix matrixled( xshift, yshift );
    spectrum matrix_chip(matrixled, chip);
-    int counter = 0;
+   int counter = 0;
    for(;;) {
        matrixled.draw();
        if (counter == 20){
            counter = 0;
-            matrixled.clear();
-            matrix_chip.update();
-            
+           matrixled.clear();
+           matrix_chip.update();
        }
        counter++;
    }

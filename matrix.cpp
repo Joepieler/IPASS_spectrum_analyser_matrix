@@ -39,3 +39,8 @@ void matrix::fill(){
         }
     }
 }
+
+
+bool matrix::get( const int & x, const int & y ){
+    return matrix_array[x][y];
+}

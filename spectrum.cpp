@@ -27,7 +27,6 @@ int spectrum::log_peak(int peak){
         return 0;
     }
     return 0;
-    
 }
 
 

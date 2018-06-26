@@ -22,9 +22,6 @@ void shiftregister::clear(){
     }
 }
 
-void shiftregister::set( bool value ) {
-    data_pin.set( value );
-}
 
 void shiftregister::shift_array_y(const std::array<bool, ARRAY_SIZE_Y> & a){
     for (unsigned int i = 0; i <= ARRAY_SIZE_Y; i++){
